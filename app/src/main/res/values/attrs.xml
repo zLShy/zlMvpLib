@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FlowTagLayout">
+        <attr name="item_leftMargin" format="dimension" />
+        <attr name="item_rightMargin" format="dimension" />
+        <attr name="item_topMargin" format="dimension" />
+        <attr name="item_bottomMargin" format="dimension" />
+        <attr name="item_leftPadding" format="dimension" />
+        <attr name="item_rightPadding" format="dimension" />
+        <attr name="item_topPadding" format="dimension" />
+        <attr name="item_bottomPadding" format="dimension" />
+        <attr name="item_background" format="reference" />
+        <attr name="item_textSize" format="dimension" />
+        <attr name="item_textColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="NiceImageView">
+        <attr name="is_circle" format="boolean" />
+        <attr name="is_cover_src" format="boolean" />
+        <attr name="corner_radius" format="dimension" />
+        <attr name="corner_top_left_radius" format="dimension" />
+        <attr name="corner_top_right_radius" format="dimension" />
+        <attr name="corner_bottom_left_radius" format="dimension" />
+        <attr name="corner_bottom_right_radius" format="dimension" />
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="inner_border_width" format="dimension" />
+        <attr name="inner_border_color" format="color" />
+        <attr name="mask_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="img_radius" format="dimension" />
+        <attr name="img_scale_type">
+            <flag name="avatar" value="0" />
+            <flag name="fitXY" value="1" />
+            <flag name="centerCrop" value="2" />
+        </attr>
+        >
+        <attr name="img_leftTopRadius" format="dimension" />
+        <attr name="img_leftBottomRadius" format="dimension" />
+        <attr name="img_rightTopRadius" format="dimension" />
+        <attr name="img_rightBottomRadius" format="dimension" />
+        <attr name="img_type">
+            <flag name="circle" value="0"/>
+            <flag name="round" value="1"/>
+        </attr>
+        <attr name="img_aspectRatio" format="float" />
+    </declare-styleable>
+    <declare-styleable name="RoundedImageView">
+        <attr name="riv_corner_radius" format="dimension" />
+        <attr name="riv_corner_radius_top_left" format="dimension" />
+        <attr name="riv_corner_radius_top_right" format="dimension" />
+        <attr name="riv_corner_radius_bottom_left" format="dimension" />
+        <attr name="riv_corner_radius_bottom_right" format="dimension" />
+        <attr name="riv_border_width" format="dimension" />
+        <attr name="riv_border_color" format="color" />
+        <attr name="riv_mutate_background" format="boolean" />
+        <attr name="riv_oval" format="boolean" />
+        <attr name="android:scaleType" />
+        <attr name="riv_tile_mode">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+        <attr name="riv_tile_mode_x">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+        <attr name="riv_tile_mode_y">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>
