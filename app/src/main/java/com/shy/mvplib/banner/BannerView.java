@@ -11,7 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.cdll.lib_core.R;
+
+import com.shy.mvplib.R;
 
 import androidx.viewpager.widget.ViewPager;
 
