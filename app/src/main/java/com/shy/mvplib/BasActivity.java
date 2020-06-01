@@ -128,9 +128,7 @@ public abstract class BasActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-//        steepStatusBar();
-//        setActivityTranslucent(this);
-//        setStatusBarColor(this,Color.WHITE);
+
     }
 
     /**
