@@ -2,7 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <item android:color="#FF0000" android:state_selected="true" />
-    <item android:color="#000000" android:state_selected="false" />
+    <item android:color="#F95700" android:state_selected="true" />
+    <item android:color="#C9CAD3" android:state_selected="false" />
 
 </selector>

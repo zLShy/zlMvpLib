@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/bottom_iv"
-        android:layout_width="30dp"
-        android:layout_height="30dp" />
+        android:layout_width="19dp"
+        android:layout_height="19dp" />
 
     <TextView
         android:id="@+id/bottom_tv"
@@ -17,5 +17,5 @@
         android:layout_gravity="center"
         android:text="123"
         android:textColor="@color/bottom_text_color"
-        android:textSize="14sp" />
+        android:textSize="12sp" />
 </LinearLayout>
