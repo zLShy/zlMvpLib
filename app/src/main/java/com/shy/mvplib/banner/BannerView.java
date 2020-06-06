@@ -28,7 +28,8 @@ public class BannerView extends RelativeLayout {
     private Drawable mBannerFocusDrable;
     private Drawable mBannerNormalDrable;
     private RelativeLayout mBottomContainer;
-
+    private Drawable mCustomSelectDrawable;
+    private Drawable mCustomNormalDrawable;
     private BannerAdapter mAdapter;
 
     private int mCurrentPage = 0;
@@ -60,6 +61,15 @@ public class BannerView extends RelativeLayout {
         mBottomContainer = findViewById(R.id.bottom_container);
     }
 
+    public BannerView setSelectDrawble(Drawable drawble) {
+        mCustomSelectDrawable = drawble;
+        return this;
+    }
+
+    public BannerView setNormalDrawble(Drawable drawble) {
+        mCustomNormalDrawable = drawble;
+        return this;
+    }
 
     public void setAdapter(BannerAdapter adapter) {
         this.mAdapter = adapter;
@@ -94,7 +104,12 @@ public class BannerView extends RelativeLayout {
         //当前点置选中图标
         mCurrentPage = position % mAdapter.getCount();
         DotIndicator selectDot = (DotIndicator) mBannerContainer.getChildAt(mCurrentPage);
-        selectDot.setDrable(mBannerFocusDrable);
+        if (mCustomSelectDrawable != null && mCustomNormalDrawable != null) {
+            selectDot.setDrable(mCustomSelectDrawable);
+        }else {
+            selectDot.setDrable(mBannerFocusDrable);
+        }
+
 
         String desc = mAdapter.getBannerDesc(mCurrentPage);
         if (!TextUtils.isEmpty(desc)) {
@@ -115,9 +130,18 @@ public class BannerView extends RelativeLayout {
             params.leftMargin = params.rightMargin = dip2px(2);
             dotIndicator.setLayoutParams(params);
             if (i == 0) {
-                dotIndicator.setDrable(mBannerFocusDrable);
+                if (mCustomSelectDrawable != null && mCustomNormalDrawable != null) {
+                    dotIndicator.setDrable(mCustomSelectDrawable);
+                }else {
+                    dotIndicator.setDrable(mBannerFocusDrable);
+                }
+
             } else {
-                dotIndicator.setDrable(mBannerNormalDrable);
+                if (mCustomSelectDrawable != null && mCustomNormalDrawable != null) {
+                    dotIndicator.setDrable(mCustomNormalDrawable);
+                }else {
+                    dotIndicator.setDrable(mBannerNormalDrable);
+                }
             }
 
             mBannerContainer.addView(dotIndicator);

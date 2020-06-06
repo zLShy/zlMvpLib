@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import java.util.Map;
 
@@ -19,7 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * Created by ZhangL on 2020-04-07.
  */
-public abstract class BasActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     protected String TAG = this.getClass().getSimpleName().toString();
 
@@ -109,12 +110,12 @@ public abstract class BasActivity extends AppCompatActivity {
 
     protected abstract void initData();
 
-    public void startActivity(Class<? extends BasActivity> clz) {
+    public void startActivity(Class<? extends BaseActivity> clz) {
         Intent intent = new Intent(this,clz);
         startActivity(intent);
     }
 
-    public void startActivityForParams(Class<? extends BasActivity> clz, Map<String,String> map) {
+    public void startActivityForParams(Class<? extends BaseActivity> clz, Map<String,String> map) {
         Intent intent = new Intent(this,clz);
         for(Map.Entry<String, String> entry : map.entrySet()){
             String mapKey = entry.getKey();
@@ -134,7 +135,7 @@ public abstract class BasActivity extends AppCompatActivity {
     /**
      * [沉浸状态栏]
      */
-    private void steepStatusBar() {
+    public void steepStatusBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             // 透明状态栏
             getWindow().addFlags(
@@ -145,6 +146,10 @@ public abstract class BasActivity extends AppCompatActivity {
 
 
         }
+    }
+
+    public void toast(String msg) {
+        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
     }
 
 }
