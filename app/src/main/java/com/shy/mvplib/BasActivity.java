@@ -97,10 +97,18 @@ public abstract class BasActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        setContentView();
+        initData();
+        initViews();
 
 
     }
+
+    protected abstract void setContentView();
+
+    protected abstract void initViews();
+
+    protected abstract void initData();
 
     public void startActivity(Class<? extends BasActivity> clz) {
         Intent intent = new Intent(this,clz);
