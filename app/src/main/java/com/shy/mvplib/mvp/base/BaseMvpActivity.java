@@ -19,16 +19,25 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends BasActivi
 //        setContentView();
 
         // 创建 P，创建只能交给 子类，每个 Activity 都不一样
+        setContentView();
         mMvpProxy = createMvpProxy();
-
+        initData();
+        initViews();
     }
+
+    protected abstract void setContentView();
+
+    protected abstract void initViews();
+
+    protected abstract void initData();
 
     /**
      * 创建 Mvp 的代理  自己去写 Fragment
+     *
      * @return
      */
     private ActivityMvpProxy createMvpProxy() {
-        if(mMvpProxy == null){
+        if (mMvpProxy == null) {
             mMvpProxy = new ActivityMvpProxyImpl<>(this);
         }
         return mMvpProxy;
