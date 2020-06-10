@@ -20,7 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * Created by ZhangL on 2020-04-07.
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BasActivity extends AppCompatActivity {
 
     protected String TAG = this.getClass().getSimpleName().toString();
 
@@ -110,12 +110,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void initData();
 
-    public void startActivity(Class<? extends BaseActivity> clz) {
+    public void startActivity(Class<? extends BasActivity> clz) {
         Intent intent = new Intent(this,clz);
         startActivity(intent);
     }
 
-    public void startActivityForParams(Class<? extends BaseActivity> clz, Map<String,String> map) {
+    public void startActivityForParams(Class<? extends BasActivity> clz, Map<String,String> map) {
         Intent intent = new Intent(this,clz);
         for(Map.Entry<String, String> entry : map.entrySet()){
             String mapKey = entry.getKey();

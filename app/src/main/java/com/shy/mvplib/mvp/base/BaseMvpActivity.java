@@ -3,14 +3,14 @@ package com.shy.mvplib.mvp.base;
 import android.os.Bundle;
 
 
-import com.shy.mvplib.BaseActivity;
+import com.shy.mvplib.BasActivity;
 import com.shy.mvplib.mvp.proxy.ActivityMvpProxy;
 import com.shy.mvplib.mvp.proxy.ActivityMvpProxyImpl;
 
 import androidx.annotation.Nullable;
 
 
-public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActivity implements BaseView {
+public abstract class BaseMvpActivity<P extends BasePresenter> extends BasActivity implements BaseView {
     private ActivityMvpProxy mMvpProxy;
 
     @Override
