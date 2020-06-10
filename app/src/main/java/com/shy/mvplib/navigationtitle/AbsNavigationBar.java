@@ -5,6 +5,7 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -59,7 +60,13 @@ public class AbsNavigationBar implements INavigation {
             textView.setText((CharSequence) mBuilder.mTextList.get(viedId));
         }
 
-        for (int i=0;i<mBuilder.mListenerList.size();i++) {
+        for (int i = 0; i < mBuilder.mImageSrc.size(); i++) {
+            int viedId = mBuilder.mImageSrc.keyAt(i);
+            ImageView imageView = findViewById(viedId);
+            imageView.setImageResource((Integer) mBuilder.mImageSrc.get(viedId));
+        }
+
+        for (int i = 0; i < mBuilder.mListenerList.size(); i++) {
             int viewId = mBuilder.mListenerList.keyAt(i);
             View view = findViewById(viewId);
             view.setOnClickListener((View.OnClickListener) mBuilder.mListenerList.get(viewId));
@@ -80,6 +87,7 @@ public class AbsNavigationBar implements INavigation {
         int mLayoutId;
         ViewGroup mParent;
         SparseArray<CharSequence> mTextList;
+        SparseArray<Integer> mImageSrc;
         SparseArray<View.OnClickListener> mListenerList;
 
         public Builder(Context context, int layoutId, ViewGroup parent) {
@@ -89,6 +97,7 @@ public class AbsNavigationBar implements INavigation {
 
             mTextList = new SparseArray<>();
             mListenerList = new SparseArray<>();
+            mImageSrc = new SparseArray<>();
         }
 
         public abstract AbsNavigationBar create();
@@ -96,6 +105,11 @@ public class AbsNavigationBar implements INavigation {
 
         public T setText(int id, String txt) {
             mTextList.put(id, txt);
+            return (T) this;
+        }
+
+        public T setSrc(int id, int src) {
+            mImageSrc.put(id, src);
             return (T) this;
         }
 
