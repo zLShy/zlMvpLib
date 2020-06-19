@@ -18,19 +18,9 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends BasActivi
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView();
-        setContentView();
         // 创建 P，创建只能交给 子类，每个 Activity 都不一样
         mMvpProxy = createMvpProxy();
-
-        initData();
-        initViews();
     }
-
-    protected abstract void setContentView();
-
-    protected abstract void initViews();
-
-    protected abstract void initData();
 
     /**
      * 创建 Mvp 的代理  自己去写 Fragment
