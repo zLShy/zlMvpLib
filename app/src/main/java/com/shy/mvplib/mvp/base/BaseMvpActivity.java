@@ -11,7 +11,7 @@ import com.shy.mvplib.mvp.proxy.ActivityMvpProxyImpl;
 import androidx.annotation.Nullable;
 
 
-public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActivity implements BaseView {
+public abstract class BaseMvpActivity<P extends BasePresenter> extends BasActivity implements BaseView {
     private ActivityMvpProxy mMvpProxy;
 
     @Override
