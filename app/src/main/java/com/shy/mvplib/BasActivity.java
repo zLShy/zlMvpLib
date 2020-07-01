@@ -28,6 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public abstract class BasActivity extends AppCompatActivity {
 
     protected String TAG = this.getClass().getSimpleName().toString();
+    public static Context mAppContext;
 
     /**
      * 为我们的 activity 的状态栏设置颜色
@@ -106,6 +107,7 @@ public abstract class BasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView();
+        mAppContext = this;
         initData();
         initViews();
 
