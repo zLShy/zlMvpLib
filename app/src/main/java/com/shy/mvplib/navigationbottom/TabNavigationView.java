@@ -71,6 +71,14 @@ public class TabNavigationView extends LinearLayout {
 
     }
 
+    public void setCurrentIndex(int index) {
+        if (index >= mTabViews.size()) {
+            new RuntimeException("角标越界....");
+        }
+        this.mCurrentIndex = index;
+        mTabViews.get(index).setSelected(true);
+    }
+
     public void setCallback(selectChange callback) {
         this.mCallback = callback;
     }
