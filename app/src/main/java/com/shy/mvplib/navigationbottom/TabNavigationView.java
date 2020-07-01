@@ -50,6 +50,7 @@ public class TabNavigationView extends LinearLayout {
 
         mTabViews.get(0).setSelected(true);
         mCurrentIndex = 0;
+
     }
 
     private void setItemClickListener(View bottomTabItem, final int position) {
@@ -73,7 +74,7 @@ public class TabNavigationView extends LinearLayout {
 
     public void setCurrentIndex(int index) {
         if (index >= mTabViews.size()) {
-            new RuntimeException("角标越界....");
+            throw new RuntimeException("角标越界....");
         }
         if (index != mCurrentIndex) {
             mTabViews.get(mCurrentIndex).setSelected(false);
