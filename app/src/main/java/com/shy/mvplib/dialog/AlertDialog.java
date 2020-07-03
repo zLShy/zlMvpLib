@@ -31,7 +31,7 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
     }
 
-    public <T extends View>T getView(int viewId) {
+    public <T extends View> T getView(int viewId) {
 
 
         return mAlert.getView(viewId);
@@ -220,6 +220,11 @@ public class AlertDialog extends Dialog implements DialogInterface {
 
             P.mWidth = width;
             P.mHeight = height;
+            return this;
+        }
+
+        public Builder setWith(int width) {
+            P.mWidth = width;
             return this;
         }
 
