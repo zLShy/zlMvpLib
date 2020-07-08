@@ -1,11 +1,15 @@
 package com.shy.mvplib;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.ActivityManager;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,13 +18,11 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 import java.util.Map;
-import java.util.Stack;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by ZhangL on 2020-04-07.
@@ -161,5 +163,28 @@ public abstract class BasActivity extends AppCompatActivity {
     public void toast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
+    public void copyTxt(String txt) {
+        ClipboardManager cm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        // 创建普通字符型ClipData
+        ClipData mClipData = ClipData.newPlainText("Label", txt);
+        // 将ClipData内容放到系统剪贴板里。
+        cm.setPrimaryClip(mClipData);
+        toast("复制成功");
+    }
 
+    public void callPhone(final String phoneNo) {
+        RxPermissions rxPermissions = new RxPermissions(this);
+        rxPermissions.request(Manifest.permission.CALL_PHONE).subscribe(new Consumer<Boolean>() {
+            @SuppressLint("MissingPermission")
+            @Override
+            public void accept(Boolean aBoolean) throws Exception {
+                if (aBoolean) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    Uri data = Uri.parse("tel:" + phoneNo);
+                    intent.setData(data);
+                    startActivity(intent);
+                }
+            }
+        });
+    }
 }
