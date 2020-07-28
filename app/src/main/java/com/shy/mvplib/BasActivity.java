@@ -19,7 +19,9 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
+
 import java.util.Map;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.functions.Consumer;
@@ -108,15 +110,14 @@ public abstract class BasActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView();
+        setContentView(setLayoutId());
         mAppContext = this;
-        initData();
         initViews();
-
+        initData();
         AppManager.getInstance().addActivity(this);
     }
 
-    protected abstract void setContentView();
+    protected abstract int setLayoutId();
 
     protected abstract void initViews();
 
@@ -137,6 +138,11 @@ public abstract class BasActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.getInstance().finishActivity(this);
+    }
 
     @Override
     protected void onResume() {
@@ -163,6 +169,7 @@ public abstract class BasActivity extends AppCompatActivity {
     public void toast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
+
     public void copyTxt(String txt) {
         ClipboardManager cm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
         // 创建普通字符型ClipData
