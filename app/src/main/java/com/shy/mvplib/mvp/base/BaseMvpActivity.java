@@ -21,17 +21,21 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends BasActivi
         setContentView(setLayoutId());
         // 创建 P，创建只能交给 子类，每个 Activity 都不一样
         mMvpProxy = createMvpProxy();
-
-        initViews();
         initData();
+        initViews();
+
     }
 
     protected abstract int setLayoutId();
 
     protected abstract void initViews();
 
-    protected abstract void initData();
-    
+    protected void initData() {
+
+    }
+
+    ;
+
     /**
      * 创建 Mvp 的代理  自己去写 Fragment
      *
