@@ -1,6 +1,7 @@
 package com.shy.mvplib.navigationbottom;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 public class TabNavigationView extends LinearLayout {
     private List<BottomTabItem> mTabViews;
@@ -24,10 +26,12 @@ public class TabNavigationView extends LinearLayout {
         this(context, attrs, 0);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public TabNavigationView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         setOrientation(HORIZONTAL);
+        setElevation(3.0F);
         mTabViews = new ArrayList<>();
 
     }
