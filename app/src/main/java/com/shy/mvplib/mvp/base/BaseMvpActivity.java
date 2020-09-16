@@ -19,7 +19,6 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends BasActivi
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Configuration configuration = getResources().getConfiguration();
         configuration.fontScale = (float) 1;
         //0.85 小, 1 标准大小, 1.15 大，1.3 超大 ，1.45 特大
@@ -27,7 +26,6 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends BasActivi
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         metrics.scaledDensity = configuration.fontScale * metrics.density;
         getBaseContext().getResources().updateConfiguration(configuration, metrics);
-
         setContentView(setLayoutId());
         // 创建 P，创建只能交给 子类，每个 Activity 都不一样
         mMvpProxy = createMvpProxy();
@@ -41,10 +39,19 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends BasActivi
     protected abstract void initViews();
 
     protected void initData() {
+    };
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Configuration configuration = getResources().getConfiguration();
+        configuration.fontScale = (float) 1;
+        //0.85 小, 1 标准大小, 1.15 大，1.3 超大 ，1.45 特大
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        metrics.scaledDensity = configuration.fontScale * metrics.density;
+        getBaseContext().getResources().updateConfiguration(configuration, metrics);
     }
-
-    ;
 
     /**
      * 创建 Mvp 的代理  自己去写 Fragment
