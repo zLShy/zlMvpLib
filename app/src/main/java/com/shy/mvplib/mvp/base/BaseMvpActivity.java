@@ -1,6 +1,8 @@
 package com.shy.mvplib.mvp.base;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 
 
 import com.shy.mvplib.BasActivity;
@@ -17,7 +19,15 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends BasActivi
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView();
+
+        Configuration configuration = getResources().getConfiguration();
+        configuration.fontScale = (float) 1;
+        //0.85 小, 1 标准大小, 1.15 大，1.3 超大 ，1.45 特大
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        metrics.scaledDensity = configuration.fontScale * metrics.density;
+        getBaseContext().getResources().updateConfiguration(configuration, metrics);
+
         setContentView(setLayoutId());
         // 创建 P，创建只能交给 子类，每个 Activity 都不一样
         mMvpProxy = createMvpProxy();
